@@ -7,19 +7,23 @@ type Props = {
 
 const LinkCard: React.FC<Props> = ({ link }) => {
   return (
-    <div className="rounded-md shadow p-2">
-      <h2 className="font-semibold text-xl text-gray-800">{link.title}</h2>
-      <div className="ml-3">
-        <div className="text-gray-500">{link.description}</div>
-      </div>
+    <div className="rounded-md md:rounded-none shadow md:shadow-none p-2">
       <a
-        className="text-indigo-500 underline block"
+        className="flex flex-col cursor-default"
         href={link.href}
         target="_blank"
         rel="noreferrer"
       >
-        {link.href}
+        <div className="text-sm text-green-700">{link.href}</div>
+        <div className="flex">
+          <h3 className="font-semibold text-xl text-indigo-600 hover:underline cursor-pointer">
+            {link.title}
+          </h3>
+        </div>
       </a>
+      <div className="ml-1">
+        <div className="text-gray-500">{link.description}</div>
+      </div>
       <div>
         <span className="text-sm text-gray-700">キーワード: </span>
         {link.keywords.map((k) => (
