@@ -15,14 +15,17 @@ const LinkCard: React.FC<Props> = ({ link }) => {
       <a className="text-indigo-500 underline block" href={link.href}>
         {link.href}
       </a>
-      {link.keywords.map((k) => (
-        <div
-          key={k}
-          className="rounded-full inline-block text-sm bg-gray-200 px-2 mr-1"
-        >
-          {k}
-        </div>
-      ))}
+      <div>
+        <span className="text-sm text-gray-700">キーワード: </span>
+        {link.keywords.map((k) => (
+          <div
+            key={k}
+            className="rounded-full inline-block text-sm bg-gray-200 px-1.5 mr-1"
+          >
+            {k}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
