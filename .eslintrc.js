@@ -28,5 +28,6 @@ module.exports = {
   },
   rules: {
     "react/prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   },
 };
