@@ -23,6 +23,7 @@ const SearchForm: React.FC<Props> = ({ onChange }) => {
           className="h-full text-xl flex-grow focus:outline-none z-10"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
+          placeholder="キーワードを入力"
         />
         <div className="h-full w-12 md:w-16 bg-white flex justify-center items-center">
           <div
