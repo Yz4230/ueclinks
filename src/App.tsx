@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Icon from "@mdi/react";
+import { mdiPlus } from "@mdi/js";
 import Index from "./pages/Index";
+import Modal from "./components/Modal";
+import CreateLinkForm from "./components/CreateLinkForm";
 
 function App(): JSX.Element {
+  const [addLinkModal, setAddLinkModal] = useState(false);
+  const closeModal = () => {
+    setAddLinkModal(false);
+  };
+
   return (
     <div className="container mx-auto ">
       <div className="bg-gray-200 h-16 md:h-20 flex items-center">
         <div className="text-3xl md:text-5xl font-bold ml-3">UEC Links</div>
+        <div className="flex-grow flex justify-end pr-2">
+          <button
+            className="bg-indigo-500 hover:bg-indigo-600 text-white rounded-md px-2 py-1 shadow flex items-center"
+            onClick={() => setAddLinkModal(true)}
+          >
+            <Icon path={mdiPlus} size="1em" />
+            リンクを追加
+          </button>
+        </div>
       </div>
+
+      <Modal show={addLinkModal} onClose={closeModal}>
+        <CreateLinkForm onClose={closeModal} />
+      </Modal>
+
       <div className="px-2 pt-2">
         <Router>
           <Route path="/" exact component={Index} />
