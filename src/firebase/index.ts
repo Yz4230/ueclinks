@@ -1,7 +1,5 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { insertMockData } from "../mocks/database";
-import { FirestoreSimple } from "@firestore-simple/web";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -19,7 +17,6 @@ firebase.initializeApp(firebaseConfig);
 const firestore = firebase.firestore();
 if (location.hostname === "localhost") {
   firestore.useEmulator("localhost", 8080);
-  insertMockData(new FirestoreSimple(firestore)).catch(console.error);
 }
 
 export { firestore };
