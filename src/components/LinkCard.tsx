@@ -12,7 +12,12 @@ const LinkCard: React.FC<Props> = ({ link }) => {
       <div className="ml-3">
         <div className="text-gray-500">{link.description}</div>
       </div>
-      <a className="text-indigo-500 underline block" href={link.href}>
+      <a
+        className="text-indigo-500 underline block"
+        href={link.href}
+        target="_blank"
+        rel="noreferrer"
+      >
         {link.href}
       </a>
       <div>
