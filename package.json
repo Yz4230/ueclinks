@@ -24,7 +24,8 @@
     "build": "craco build",
     "test": "craco test",
     "emulators:start": "firebase emulators:start",
-    "deploy": "firebase deploy",
+    "deploy": "firebase deploy --only hosting",
+    "deploy:all": "firebase deploy",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
