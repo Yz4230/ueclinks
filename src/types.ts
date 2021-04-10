@@ -6,16 +6,19 @@ export interface FirebaseObject {
   updatedAt: Date;
 }
 
-export interface Tag extends FirebaseObject {
+export interface Tag {
   name: string;
   descriptions: string;
 }
 
-export interface Link extends FirebaseObject {
+export type FTag = Tag & FirebaseObject;
+
+export interface Link {
   title: string;
   description: string;
   href: string;
   onCampusOnly: boolean;
   keywords: string[];
-  tags: Tag[];
 }
+
+export type FLink = Link & FirebaseObject;

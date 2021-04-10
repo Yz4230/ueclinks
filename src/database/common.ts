@@ -1,8 +1,8 @@
 import { database } from "../firebase/database";
-import { FirebaseObject, Link } from "../types";
+import { FirebaseObject, FLink } from "../types";
 import { OmitId, QueryKey } from "@firestore-simple/web/dist/types";
 
-const getDao = (path: string) => database.collection<Link>({ path });
+const getDao = (path: string) => database.collection<FLink>({ path });
 
 export interface QueryOptions<T extends FirebaseObject> {
   limit?: number;
@@ -10,7 +10,7 @@ export interface QueryOptions<T extends FirebaseObject> {
   startAfter?: T;
 }
 
-const getQuery = (path: string, options: QueryOptions<Link>) => {
+const getQuery = (path: string, options: QueryOptions<FLink>) => {
   const query = getDao(path).limit(options.limit ?? 50);
   if (options.sort) query.orderBy(options.sort.by, options.sort.order);
   if (options.startAfter) query.startAfter(options.startAfter);

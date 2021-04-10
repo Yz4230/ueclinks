@@ -1,10 +1,10 @@
 import { FirestoreSimple } from "@firestore-simple/web";
-import { Link } from "../types";
+import { FLink } from "../types";
 import firebase from "firebase/app";
 
 const insertMockData = async (database: FirestoreSimple) => {
   await database
-    .collection<Link>({ path: "links" })
+    .collection<FLink>({ path: "links" })
     .add({
       title: "link 1",
       description: "desc 1",
@@ -15,7 +15,7 @@ const insertMockData = async (database: FirestoreSimple) => {
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
   await database
-    .collection<Link>({ path: "links" })
+    .collection<FLink>({ path: "links" })
     .add({
       title: "link 2",
       description: "desc 2",
@@ -26,7 +26,7 @@ const insertMockData = async (database: FirestoreSimple) => {
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
   await database
-    .collection<Link>({ path: "links" })
+    .collection<FLink>({ path: "links" })
     .add({
       title: "link 3",
       description: "desc 3",

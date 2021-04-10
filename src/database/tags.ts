@@ -1,10 +1,10 @@
 import { database } from "../firebase/database";
-import { Tag } from "../types";
+import { FTag } from "../types";
 import { QueryOptions } from "./common";
 
-const getTagsDao = () => database.collection<Tag>({ path: "tags" });
+const getTagsDao = () => database.collection<FTag>({ path: "tags" });
 
-const getAllTags = (options: QueryOptions<Tag>) => {
+const getAllTags = (options: QueryOptions<FTag>) => {
   const query = getTagsDao()
     .orderBy("createdAt", "desc")
     .limit(options.limit ?? 50);

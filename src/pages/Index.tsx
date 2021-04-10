@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import SearchForm from "../components/SearchForm";
 import { findLinksByKeyword, getAllLinks } from "../database/links";
-import { Link } from "../types";
+import { FLink } from "../types";
 import LinkCard from "../components/LinkCard";
 
 export default function Index(): React.ReactElement {
-  const [links, setLinks] = useState<Link[]>([]);
+  const [links, setLinks] = useState<FLink[]>([]);
 
   useEffect(() => {
     getAllLinks().then(setLinks);

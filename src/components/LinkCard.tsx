@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "../types";
+import { FLink } from "../types";
 
 type Props = {
-  link: Link;
+  link: FLink;
 };
 
 const LinkCard: React.FC<Props> = ({ link }) => {
