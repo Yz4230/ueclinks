@@ -28,7 +28,9 @@ export default function Index(): React.ReactElement {
           <div className="text-gray-500">リンクは見つかりませんでした。</div>
         )}
         {links.map((l) => (
-          <LinkCard key={l.id} link={l} />
+          <div key={l.id} className="mb-2">
+            <LinkCard link={l} />
+          </div>
         ))}
       </div>
     </div>
