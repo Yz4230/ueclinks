@@ -15,10 +15,17 @@ const LinkCard: React.FC<Props> = ({ link }) => {
         rel="noreferrer"
       >
         <div className="text-sm text-green-700">{link.href}</div>
-        <div className="flex">
+        <div className="flex items-center">
           <h3 className="font-semibold text-xl text-indigo-600 hover:underline cursor-pointer">
             {link.title}
           </h3>
+          {link.onCampusOnly && (
+            <div>
+              <div className="bg-red-500 border-2 border-red-600 text-white font-bold flex items-center rounded-full text-sm px-2">
+                学内のみ
+              </div>
+            </div>
+          )}
         </div>
       </a>
       <div className="ml-1">
