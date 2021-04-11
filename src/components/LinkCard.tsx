@@ -21,7 +21,7 @@ const LinkCard: React.FC<Props> = ({ link }) => {
           </h3>
           {link.onCampusOnly && (
             <div>
-              <div className="bg-red-500 border-2 border-red-600 text-white font-bold flex items-center rounded-full text-sm px-2">
+              <div className="bg-red-500 border-2 border-red-600 text-white font-bold flex items-center rounded-full text-sm px-2 ml-1">
                 学内のみ
               </div>
             </div>
