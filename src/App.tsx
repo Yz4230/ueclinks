@@ -15,7 +15,12 @@ function App(): JSX.Element {
   return (
     <div className="container mx-auto ">
       <div className="bg-gray-200 h-16 md:h-20 flex items-center">
-        <div className="text-3xl md:text-5xl font-bold ml-3">UEC Links</div>
+        <a
+          className="block text-3xl md:text-5xl font-bold ml-3"
+          href={location.href}
+        >
+          UEC Links
+        </a>
         <div className="flex-grow flex justify-end items-center px-2">
           <a
             href="https://github.com/Yz4230/ueclinks"
