@@ -16,7 +16,7 @@ function App(): JSX.Element {
     <div className="container mx-auto ">
       <div className="bg-gray-200 h-16 md:h-20 flex items-center">
         <div className="text-3xl md:text-5xl font-bold ml-3">UEC Links</div>
-        <div className="flex-grow flex gap-2 justify-end items-center px-2">
+        <div className="flex-grow flex gap-2.5 md:gap-2 justify-end items-center px-2">
           <a
             href="https://github.com/Yz4230/ueclinks"
             target="_blank"
