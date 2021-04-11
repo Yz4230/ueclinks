@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FLink } from "../types";
 
 type Props = {
@@ -6,28 +6,45 @@ type Props = {
 };
 
 const LinkCard: React.FC<Props> = ({ link }) => {
+  const [underlined, setUnderlined] = useState(false);
+  const cursorOvered = () => setUnderlined(true);
+  const cursorOuted = () => setUnderlined(false);
+
   return (
     <div className="rounded-md md:rounded-none shadow md:shadow-none p-2">
-      <a
-        className="flex flex-col cursor-default"
-        href={link.href}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <div className="text-sm text-green-700">{link.href}</div>
-        <div className="flex items-center">
-          <h3 className="font-semibold text-xl text-indigo-600 hover:underline cursor-pointer">
-            {link.title}
+      <div className="flex">
+        <a
+          className="truncate"
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          onMouseOver={cursorOvered}
+          onMouseOut={cursorOuted}
+        >
+          <span className="text-sm text-green-700">{link.href}</span>
+        </a>
+      </div>
+      <div className="flex">
+        <a
+          className="flex items-center"
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          onMouseOver={cursorOvered}
+          onMouseOut={cursorOuted}
+        >
+          <h3 className="font-semibold text-xl text-indigo-600 cursor-pointer">
+            <span className={underlined ? "underline" : ""}>{link.title}</span>
           </h3>
           {link.onCampusOnly && (
-            <div>
-              <div className="bg-red-500 border-2 border-red-600 text-white font-bold flex items-center rounded-full text-sm px-2 ml-1">
+            <div className="inline-block">
+              <div className="bg-red-500 border-2 border-red-600 text-white font-bold flex items-center rounded-full text-xs px-2 ml-1">
                 学内のみ
               </div>
             </div>
           )}
-        </div>
-      </a>
+        </a>
+      </div>
       <div className="ml-1">
         <div className="text-gray-500">{link.description}</div>
       </div>
