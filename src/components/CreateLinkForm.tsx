@@ -45,6 +45,7 @@ const CreateLinkForm: React.FC<Props> = ({ onClose }) => {
     setErrorMessages(messages);
     if (messages.length === 0) {
       createLink(input).then(() => {
+        window.dispatchEvent(new Event("newLinkCreated"));
         onClose();
         setInput(initialInput);
         setErrorMessages([]);

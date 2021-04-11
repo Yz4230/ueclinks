@@ -10,14 +10,17 @@ export default function Index(): React.ReactElement {
     "pending" | "finished" | "failed"
   >("pending");
 
-  useEffect(() => {
+  const fetchLinks = () => {
     getAllLinks()
       .then((data) => {
         setLinks(data);
         setFetchStatus("finished");
       })
       .catch(() => setFetchStatus("failed"));
-  }, []);
+  };
+  window.addEventListener("newLinkCreated", fetchLinks);
+
+  useEffect(fetchLinks, []);
 
   const onChange = useCallback((searchString: string) => {
     setLinks([]);
