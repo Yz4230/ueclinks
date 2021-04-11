@@ -1,6 +1,8 @@
 const normalizeString = (targetString: string) =>
-  targetString.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s: string) =>
-    String.fromCharCode(s.charCodeAt(0) - 0xfee0)
-  );
+  targetString
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s: string) =>
+      String.fromCharCode(s.charCodeAt(0) - 0xfee0)
+    )
+    .replace("　", " ");
 
 export { normalizeString };
