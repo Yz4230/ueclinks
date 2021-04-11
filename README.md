@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# [UEC Links](https://ueclinks.web.app)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+電通大生が大学のURLをまとめるために、[React](https://ja.reactjs.org)によって作成されました！サイトの質を高めるために、ぜひ気軽にプルリクを出してください✨
 
-## Available Scripts
+## Contribute
 
-In the project directory, you can run:
+このサイトは[Firebase](https://firebase.google.com)を使って作成されています。
+サイトのテストをするには、[Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite)が必要です。
 
-### `npm start`
+### [Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite)のインストールについて
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+エミュレータをインストールするには、`Node.js>=8.0`と`Java>=1.8`が必要です。
+詳細は[こちら](https://firebase.google.com/docs/emulator-suite/install_and_configure)を参照してください。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 開発環境のセットアップ
 
-### `npm test`
+次のコマンドを実行してください。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/Yz4230/ueclinks
+cd ueclinks
+npm ci
+```
 
-### `npm run build`
+### 開発用サーバーの起動方法
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+はじめに、エミュレータを起動してください。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run emulators:start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+次に、Reactの開発用サーバーを起動します。
 
-### `npm run eject`
+```bash
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### プルリクエストについて
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+サイトの安全性と信頼性を担保するために、プルリクエストは電通大生、卒業生、教職員、その他信頼できる開発者のみとさせていただきます。開発者の確認のために、個別に連絡を取る場合があります。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## もっと学びたい人は
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Reactを学ぶには[React documentation](https://reactjs.org)を参照してください。
