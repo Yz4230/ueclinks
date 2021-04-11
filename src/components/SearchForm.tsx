@@ -34,9 +34,12 @@ const SearchForm: React.FC<Props> = ({ onChange }) => {
           </div>
         </div>
       </div>
-      <div className="text-red-500 flex mt-1">
-        <Icon path={mdiAlertCircle} size="1.5em" className="inline mr-1" />
-        <span>現在、入力できるキーワードはひとつまでです。</span>
+      <div className="flex justify-center md:justify-start mt-1">
+        <div className="hidden md:block w-16" />
+        <div className="text-red-500 flex text-sm md:text-base">
+          <Icon path={mdiAlertCircle} size="1.5em" className="inline mr-1" />
+          <div>現在、入力できるキーワードはひとつまでです。</div>
+        </div>
       </div>
     </div>
   );
