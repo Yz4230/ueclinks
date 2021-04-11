@@ -4,6 +4,7 @@ import { mdiAlertCircle, mdiClose, mdiPlus } from "@mdi/js";
 import LinkInputForm from "./LinkInputForm";
 import { Link } from "../types";
 import { createLink } from "../database/links";
+import { isURL } from "../utils";
 
 const initialInput: Link = {
   title: "",
@@ -19,28 +20,34 @@ type Props = {
 
 const CreateLinkForm: React.FC<Props> = ({ onClose }) => {
   const [input, setInput] = useState(initialInput);
-  const [invalidFields, setInvalidFields] = useState<string[]>([]);
+  const [errorMessages, setErrorMessages] = useState<string[]>([]);
 
   const validateInput = () => {
     const ret = [];
+    const emptyFields = [];
 
-    if (!input.title) ret.push("タイトル");
-    if (!input.description) ret.push("詳細");
-    if (!input.href) ret.push("URL");
-    if (input.keywords.length === 0) ret.push("キーワード");
+    if (!input.title) emptyFields.push("タイトル");
+    if (!input.description) emptyFields.push("詳細");
+    if (!input.href) emptyFields.push("URL");
+    if (input.keywords.length === 0) emptyFields.push("キーワード");
+    if (emptyFields.length > 0)
+      ret.push(emptyFields.join(", ") + "を入力してください。");
+
+    if (input.href && !isURL(input.href))
+      ret.push("適切なURLを入力してください。");
 
     return ret;
   };
 
   const submit = () => {
-    const fields = validateInput();
+    const messages = validateInput();
 
-    setInvalidFields(fields);
-    if (fields.length === 0) {
+    setErrorMessages(messages);
+    if (messages.length === 0) {
       createLink(input).then(() => {
         onClose();
         setInput(initialInput);
-        setInvalidFields([]);
+        setErrorMessages([]);
       });
     }
   };
@@ -59,10 +66,10 @@ const CreateLinkForm: React.FC<Props> = ({ onClose }) => {
         </div>
       </div>
       <LinkInputForm value={input} onChange={setInput} />
-      {invalidFields.length > 0 && (
+      {errorMessages.length > 0 && (
         <div className="text-red-500 flex mt-2">
           <Icon path={mdiAlertCircle} size="1.5em" className="mr-1" />
-          {invalidFields.join(", ")}を入力してください。
+          {errorMessages.join("")}
         </div>
       )}
       <div className="flex justify-end">

@@ -5,4 +5,7 @@ const normalizeString = (targetString: string) =>
     )
     .replace("　", " ");
 
-export { normalizeString };
+const isURL = (targetString: string) =>
+  /^https?:\/\/([0-9a-z-]+.)+[a-z]+/.test(targetString);
+
+export { normalizeString, isURL };
