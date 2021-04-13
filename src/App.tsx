@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiGithub, mdiOpenInNew, mdiPlus } from "@mdi/js";
 import Index from "./pages/Index";
@@ -52,6 +52,15 @@ function App(): JSX.Element {
 
       <div className="px-2 pt-2">
         <Router>
+          <div className="h-6 grid gap-1 grid-cols-2 grid-rows-1">
+            <Link to="/" className="block flex justify-center bg-gray-50">
+              URL
+            </Link>
+            <Link to="/remote" className="block flex justify-center bg-gray-50">
+              リモート
+            </Link>
+          </div>
+
           <Route path="/" exact component={Index} />
         </Router>
       </div>
