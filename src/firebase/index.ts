@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/analytics";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -22,5 +23,7 @@ if (location.hostname === "localhost") {
   auth.useEmulator("http://localhost:9099");
 }
 
-export { firestore };
+const analytics = firebase.analytics();
+
+export { firestore, analytics };
 export default firebase;
