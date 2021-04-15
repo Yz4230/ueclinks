@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Icon from "@mdi/react";
 import { mdiClose, mdiMagnify, mdiAlertCircle } from "@mdi/js";
+import { analytics } from "../firebase";
 
 type Props = {
   onChange: (inputString: string) => void;
@@ -11,6 +12,8 @@ const SearchForm: React.FC<Props> = ({ onChange }) => {
 
   useEffect(() => {
     onChange(searchString);
+    if (searchString)
+      analytics.logEvent("search", { search_term: searchString });
   }, [onChange, searchString]);
 
   return (

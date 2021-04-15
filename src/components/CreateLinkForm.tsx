@@ -5,6 +5,7 @@ import LinkInputForm from "./LinkInputForm";
 import { Link } from "../types";
 import { createLink } from "../database/links";
 import { isURL } from "../utils";
+import { analytics } from "../firebase";
 
 const initialInput: Link = {
   title: "",
@@ -47,6 +48,7 @@ const CreateLinkForm: React.FC<Props> = ({ onClose }) => {
       createLink(input).then(() => {
         window.dispatchEvent(new Event("newLinkCreated"));
         onClose();
+        analytics.logEvent("create_link", input);
         setInput(initialInput);
         setErrorMessages([]);
       });

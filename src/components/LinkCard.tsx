@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FLink } from "../types";
+import { analytics } from "../firebase";
 
 type Props = {
   link: FLink;
@@ -9,6 +10,9 @@ const LinkCard: React.FC<Props> = ({ link }) => {
   const [underlined, setUnderlined] = useState(false);
   const cursorOvered = () => setUnderlined(true);
   const cursorOuted = () => setUnderlined(false);
+  const logClick = () => {
+    analytics.logEvent("click_link_card", link);
+  };
 
   return (
     <div className="rounded-md md:rounded-none shadow md:shadow-none p-2">
@@ -18,6 +22,7 @@ const LinkCard: React.FC<Props> = ({ link }) => {
           href={link.href}
           target="_blank"
           rel="noreferrer"
+          onClick={logClick}
         />
         <div className="flex">
           <a
@@ -27,6 +32,7 @@ const LinkCard: React.FC<Props> = ({ link }) => {
             rel="noreferrer"
             onMouseOver={cursorOvered}
             onMouseOut={cursorOuted}
+            onClick={logClick}
           >
             <span className="text-sm text-green-700">{link.href}</span>
           </a>
@@ -39,6 +45,7 @@ const LinkCard: React.FC<Props> = ({ link }) => {
             rel="noreferrer"
             onMouseOver={cursorOvered}
             onMouseOut={cursorOuted}
+            onClick={logClick}
           >
             <h3 className="font-semibold text-xl text-indigo-600 cursor-pointer">
               <span className={underlined ? "underline" : ""}>
