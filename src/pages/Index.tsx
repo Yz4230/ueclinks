@@ -3,6 +3,7 @@ import SearchForm from "../components/SearchForm";
 import { findLinksByKeyword, getAllLinks } from "../database/links";
 import { FLink } from "../types";
 import LinkCard from "../components/LinkCard";
+import { normalizeString } from "../utils";
 
 export default function Index(): React.ReactElement {
   const [links, setLinks] = useState<FLink[]>([]);
@@ -26,7 +27,10 @@ export default function Index(): React.ReactElement {
     setLinks([]);
     setFetchStatus("pending");
 
-    (searchString == "" ? getAllLinks() : findLinksByKeyword(searchString))
+    (searchString == ""
+      ? getAllLinks()
+      : findLinksByKeyword(normalizeString(searchString))
+    )
       .then((data) => {
         setLinks(data);
         setFetchStatus("finished");
