@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { mdiInformation } from "@mdi/js";
 import CheckBox from "./CheckBox";
 import InputForm from "./InputForm";
@@ -12,16 +12,23 @@ type Props = {
 };
 
 const LinkInputForm: React.FC<Props> = ({ value, onChange }) => {
+  const [rawKeywords, setRawKeywords] = useState("");
   const updateKeywords = (raw: string) => {
+    setRawKeywords(raw);
+    const keywords = raw
+      .split(/[\u{20}\u{3000}]+/u)
+      .filter((s) => s)
+      .map(normalizeString)
+      .map((s) => s.toLowerCase());
     onChange({
       ...value,
-      keywords: raw
-        .split(/[\u{20}\u{3000}]+/u)
-        .filter((s) => s)
-        .map(normalizeString)
-        .map((s) => s.toLowerCase()),
+      keywords: Array.from(new Set(keywords)),
     });
   };
+
+  useEffect(() => {
+    if (value.keywords.length === 0) setRawKeywords("");
+  }, [value.keywords]);
 
   return (
     <div className="w-full h-full">
@@ -45,6 +52,7 @@ const LinkInputForm: React.FC<Props> = ({ value, onChange }) => {
         />
         <InputForm
           placeholder="キーワード (例：1年 時間割)"
+          value={rawKeywords}
           onChange={updateKeywords}
         />
         <CheckBox
