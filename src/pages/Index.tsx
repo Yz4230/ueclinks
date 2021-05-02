@@ -3,7 +3,7 @@ import SearchForm from "../components/SearchForm";
 import { findLinksByKeyword, getAllLinks } from "../database/links";
 import { FLink } from "../types";
 import LinkCard from "../components/LinkCard";
-import { normalizeString } from "../utils";
+import { boolToInt, loadFavorites, normalizeString } from "../utils";
 
 export default function Index(): React.ReactElement {
   const [links, setLinks] = useState<FLink[]>([]);
@@ -14,7 +14,15 @@ export default function Index(): React.ReactElement {
   const fetchLinks = () => {
     getAllLinks()
       .then((data) => {
-        setLinks(data);
+        const favoriteIds = loadFavorites().map((l) => l.id);
+        setLinks(
+          data.sort((a, b) => {
+            return (
+              boolToInt(favoriteIds.includes(b.id)) -
+              boolToInt(favoriteIds.includes(a.id))
+            );
+          })
+        );
         setFetchStatus("finished");
       })
       .catch(() => setFetchStatus("failed"));

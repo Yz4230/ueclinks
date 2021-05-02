@@ -22,3 +22,5 @@ export interface Link {
 }
 
 export type FLink = Link & FirebaseObject;
+
+export type Favorites = FLink[];
