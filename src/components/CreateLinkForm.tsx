@@ -88,4 +88,4 @@ const CreateLinkForm: React.FC<Props> = ({ onClose }) => {
   );
 };
 
-export default CreateLinkForm;
+export default React.memo(CreateLinkForm);
