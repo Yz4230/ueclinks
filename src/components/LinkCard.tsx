@@ -114,4 +114,4 @@ const LinkCard: React.FC<Props> = ({ link }) => {
   );
 };
 
-export default LinkCard;
+export default React.memo(LinkCard);
