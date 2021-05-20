@@ -37,6 +37,17 @@ const LinkCard: React.FC<Props> = ({ link }) => {
 
   return (
     <div className="rounded-md md:rounded-none shadow md:shadow-none p-2">
+      <a
+        className="block truncate"
+        href={link.href}
+        target="_blank"
+        rel="noreferrer"
+        onMouseOver={cursorOvered}
+        onMouseOut={cursorOuted}
+        onClick={onCardClicked}
+      >
+        <span className="text-sm text-green-700">{link.href}</span>
+      </a>
       <div className="flex">
         <div className="relative flex-grow">
           <a
@@ -46,19 +57,6 @@ const LinkCard: React.FC<Props> = ({ link }) => {
             rel="noreferrer"
             onClick={onCardClicked}
           />
-          <div className="flex">
-            <a
-              className="truncate"
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              onMouseOver={cursorOvered}
-              onMouseOut={cursorOuted}
-              onClick={onCardClicked}
-            >
-              <span className="text-sm text-green-700">{link.href}</span>
-            </a>
-          </div>
           <div className="flex">
             <a
               className="flex items-center"
